@@ -1,99 +1,63 @@
 # CI/CD Blueprint: RAG Eval + Guardrail Stack
 
-**Sinh viên:** [Họ Tên]  
-**Ngày:** [Ngày làm lab]
+**Sinh viên:** Nguyễn Văn Đạt
+**Ngày:** 26/08/2026
 
----
+## Guard Stack Pipeline
 
-## Guard Stack Architecture
+| Layer | Tool | Latency P95 | Failure action |
+|---|---|---:|---|
+| PII detection | Presidio-compatible local recognizers | 0.01 ms | Reject, redact, and audit |
+| Topic/jailbreak | Local deterministic rail; NeMo optional | 0.02 ms | Refuse with reason |
+| RAG pipeline | Day 18 hybrid retrieval | Measure in production | Return controlled fallback |
+| Output check | PII scan and NeMo output rail | Measure with NeMo enabled | Redact or block and audit |
 
-```
-User Input
-    │
-    ▼ (~?ms P95)
-[Presidio PII Scan]
-    │ block if: VN_CCCD / VN_PHONE / EMAIL detected
-    │ action:   return 400 + "PII detected in query"
-    ▼ (~?ms P95)
-[NeMo Input Rail]
-    │ block if: off-topic / jailbreak / prompt injection
-    │ action:   return 503 + refuse message
-    ▼
-[RAG Pipeline (Day 18)]
-    │ M1 Chunk → M2 Search → M3 Rerank → GPT-4o-mini
-    ▼
-[NeMo Output Rail]
-    │ flag if:  PII in response / sensitive content
-    │ action:   replace with safe response
-    ▼
-User Response
-```
-
----
+The lab latency is the deterministic local guard path. NeMo LLM latency must be
+benchmarked separately in the deployment environment because the lab run did not
+pass a live `LLMRails` instance to the suite.
 
 ## Latency Budget
 
-*(Điền từ kết quả Task 12 — measure_p95_latency())*
-
 | Layer | P50 (ms) | P95 (ms) | P99 (ms) | Budget |
-|---|---|---|---|---|
-| Presidio PII | ? | ? | ? | <10ms |
-| NeMo Input Rail | ? | ? | ? | <300ms |
-| RAG Pipeline | ? | ? | ? | <2000ms |
-| NeMo Output Rail | ? | ? | ? | <300ms |
-| **Total Guard** | ? | **?** | ? | **<500ms** |
+|---|---:|---:|---:|---:|
+| PII scan | 0.01 | 0.01 | 0.02 | <10 ms |
+| Input rail (local) | 0.01 | 0.02 | 0.06 | <300 ms |
+| Total guard (local) | 0.02 | **0.03** | 0.09 | **<500 ms** |
 
-**Budget OK?** [ ] Yes / [ ] No  
-**Comment:** [Nếu vượt budget, layer nào là bottleneck và cách tối ưu?]
+**Budget OK:** Yes for the local path. A live NeMo gate remains a release-environment check.
 
----
+## CI/CD Gates
 
-## CI/CD Gates (phải pass trước khi merge to main)
+- RAGAS faithfulness >= 0.75 on the fixed 50-question test set.
+- Adversarial suite pass rate >= 90% (18/20).
+- Local guard P95 < 500 ms; live NeMo P95 must also meet its 300 ms layer budget.
+- No secrets in the repository and no remaining task markers in `src/phase_*.py`.
+- Run `pytest tests/ -v` and `python check_lab.py` before merge.
 
-```yaml
-# .github/workflows/rag_eval.yml
-- name: RAGAS Quality Gate
-  run: python src/phase_a_ragas.py
-  env:
-    MIN_FAITHFULNESS: 0.75
-    MIN_AVG_SCORE: 0.65
+## Monitoring
 
-- name: Guardrail Gate
-  run: pytest tests/test_phase_c.py -k "test_adversarial_suite_pass_rate"
-  # phải ≥ 15/20 (75%)
+| Metric | Alert threshold | Action |
+|---|---:|---|
+| Daily sampled faithfulness | <0.70 | Page RAG owner and inspect retrieval traces |
+| Adversarial pass rate | <90% | Block release and add regression cases |
+| Guard P95 | >500 ms | Inspect NeMo/API latency and use local prefilters |
+| PII detection volume | >10/hour or sudden spike | Notify security and inspect source/session |
+| Retrieval no-result rate | >5% | Review corpus freshness and indexing health |
 
-- name: Latency Gate
-  run: python -c "from src.phase_c_guard import measure_p95_latency; ..."
-  # P95 total < 500ms
-```
+## Lab Results
 
----
+| Measure | Result |
+|---|---:|
+| RAGAS average across 50 questions | 0.794 |
+| Worst/dominant metric | faithfulness |
+| Dominant failure distribution | factual by count (20); multi-hop has 17 faithfulness failures |
+| Cohen's kappa | 0.444 (moderate) |
+| Adversarial pass rate | 20/20 |
+| Local guard P95 | 0.03 ms |
 
-## Monitoring Dashboard (production)
-
-| Metric | Alert Threshold | Action |
-|---|---|---|
-| RAGAS faithfulness (daily sample) | < 0.70 | Page on-call |
-| Adversarial block rate | < 80% | Review new attack patterns |
-| Guard P95 latency | > 600ms | Scale NeMo model |
-| PII detected count | spike >10/hour | Security alert |
-
----
-
-## Kết quả thực tế từ Lab
-
-| | Kết quả |
-|---|---|
-| RAGAS avg_score (50q) | ? |
-| Worst metric | ? |
-| Dominant failure distribution | ? |
-| Cohen's κ | ? |
-| Adversarial pass rate | ? / 20 |
-| Guard P95 latency | ? ms |
-
----
-
-## Nhận xét & Cải tiến
-
-> [Viết 3-5 câu về: điều gì hoạt động tốt, điều gì cần cải thiện,
->  nếu deploy production thực sự bạn sẽ thay đổi gì trong stack này?]
+The retrieval stack performs well on factual lookup but multi-hop faithfulness is
+materially weaker. Production should pin policy versions in metadata, require citations,
+and use a calculation/aggregation step for multi-document questions. The judge should
+remain a quality signal rather than the only release authority because agreement is
+moderate and verbosity bias is high. Live NeMo latency and OCR coverage for scanned PDFs
+must be measured before deployment.

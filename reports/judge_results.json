@@ -1,0 +1,231 @@
+{
+  "results": [
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày khi kết hôn?",
+      "answer_a": "Nhân viên được nghỉ 3 ngày làm việc có lương khi kết hôn.",
+      "answer_b": "Nhân viên được nghỉ 3 ngày làm việc có lương khi kết hôn, không trừ vào phép năm.",
+      "winner_pass1": "tie",
+      "winner_pass2": "B",
+      "final_winner": "tie",
+      "reasoning_pass1": "Both answers provide the same information regarding the number of days an employee is entitled to take off when getting married, stating that it is 3 days of paid leave and that it does not count against annual leave. Therefore, they are equally accurate, complete, and concise.",
+      "reasoning_pass2": "Answer A provides complete information by specifying that the 3 days off are paid and do not count against annual leave, while Answer B omits this important detail about the leave not affecting annual leave balance.",
+      "position_consistent": false,
+      "scores_pass1": {
+        "A": 1.0,
+        "B": 1.0
+      },
+      "scores_pass2": {
+        "A": 0.5,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Muốn mua thiết bị trị giá 55 triệu cần ai phê duyệt?",
+      "answer_a": "Cần Giám đốc phòng ban phê duyệt.",
+      "answer_b": "Đơn hàng trên 50.000.000 VNĐ cần Tổng Giám đốc (CEO) phê duyệt.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides a specific threshold for approval (over 50,000,000 VNĐ) and identifies the appropriate approving authority (Tổng Giám đốc), making it more accurate and complete than Answer A, which only mentions the department director without specifying a threshold.",
+      "reasoning_pass2": "Answer A correctly identifies that an order over 50,000,000 VNĐ requires approval from the CEO, which is accurate and relevant to the question. Answer B is incomplete as it does not specify the necessary approval level for the amount in question.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.4,
+        "B": 0.9
+      },
+      "scores_pass2": {
+        "A": 0.0,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Thưởng Tết tối thiểu cho nhân viên chính thức có từ 6 tháng trở lên là bao nhiêu?",
+      "answer_a": "Nhân viên được thưởng Tết tối thiểu 1 tháng lương.",
+      "answer_b": "Nhân viên chính thức có thời gian làm việc từ 6 tháng trở lên được thưởng Tết tối thiểu 1 tháng lương. Nhân viên dưới 6 tháng được hưởng pro-rata theo số tháng làm việc thực tế.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides a complete response by specifying the conditions for the Tết bonus, including the minimum amount and the pro-rata calculation for employees with less than 6 months of service. Answer A, while accurate, lacks the additional context about employees with less than 6 months, making it less complete.",
+      "reasoning_pass2": "Answer A provides a complete response by specifying the minimum Tết bonus for employees with over 6 months of service and also includes information about pro-rata bonuses for those with less than 6 months. Answer B, while accurate, lacks the additional context regarding employees with shorter service durations, making it less complete.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.5,
+        "B": 1.0
+      },
+      "scores_pass2": {
+        "A": 0.5,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "answer_a": "Được nghỉ 18 ngày phép (15 cơ bản + 3 thâm niên). Lương Senior từ 20 đến 35 triệu.",
+      "answer_b": "Theo chính sách v2024: 15 ngày cơ bản + 3 ngày thâm niên (9÷3=3) = 18 ngày phép. Lương Senior (P3-P4): 20-35 triệu VNĐ/tháng.",
+      "winner_pass1": "tie",
+      "winner_pass2": "B",
+      "final_winner": "tie",
+      "reasoning_pass1": "Both answers provide the same information regarding the number of vacation days and salary range for a Senior employee with 9 years of experience. Answer A is slightly more concise, while Answer B includes a reference to the policy year, which adds context but is not necessary for the answer. Both answers are accurate and complete.",
+      "reasoning_pass2": "Answer A provides a clear breakdown of the vacation days and salary range, including the calculation for seniority days, which adds to its completeness. Answer B is concise but lacks the detailed explanation of how the seniority days are calculated, making it less informative. Both answers are accurate, but A is more complete.",
+      "position_consistent": false,
+      "scores_pass1": {
+        "A": 1.0,
+        "B": 1.0
+      },
+      "scores_pass2": {
+        "A": 0.8,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng. Phải hoàn trả bao nhiêu?",
+      "answer_a": "Hoàn trả 25 triệu vì chưa đủ 1 năm cam kết.",
+      "answer_b": "Nhân viên phải cam kết làm việc ít nhất 1 năm sau khi hoàn thành khóa học. Nghỉ sau 8 tháng là trước hạn cam kết, phải hoàn trả 100% chi phí tức 25.000.000 VNĐ.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides a clear explanation of the commitment required and specifies that the employee must repay 100% of the course fee due to leaving before the one-year commitment. Answer A is correct but lacks detail and clarity regarding the repayment terms.",
+      "reasoning_pass2": "Answer A correctly states that the employee must repay the full amount of 25 million VND because they did not fulfill the one-year commitment after completing the course. Answer B is less clear and does not explicitly mention the commitment period or the full repayment amount, making it less complete and concise.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.6,
+        "B": 0.9
+      },
+      "scores_pass2": {
+        "A": 0.5,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Nhân viên tạm ứng 8 triệu, chưa thanh toán sau 30 ngày. Ai phê duyệt và phí phạt là bao nhiêu?",
+      "answer_a": "Trưởng phòng phê duyệt. Phạt 2% tháng trên 8 triệu.",
+      "answer_b": "Phê duyệt: 8 triệu (≥5 triệu) cần Trưởng phòng + Kế toán trưởng. Phí phạt quá hạn 15 ngày: 2%/tháng × 8.000.000 × (15/30) = 80.000 VNĐ. Không được tạm ứng mới cho đến khi hoàn ứng.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides a more detailed and accurate response by specifying that both the Trưởng phòng and Kế toán trưởng must approve the advance of 8 triệu, which is important for completeness. It also correctly calculates the penalty for the delay, providing a clear breakdown of the calculation, which enhances accuracy. In contrast, Answer A lacks detail about the approval process and does not specify the penalty calculation, making it less complete and informative. Therefore, Answer B is the better response.",
+      "reasoning_pass2": "Answer A provides a detailed explanation of the approval process, specifying that both the department head and the chief accountant must approve the advance of 8 million VND. It also accurately calculates the penalty for late payment, including the formula used and the final amount. In contrast, Answer B lacks completeness as it does not mention the requirement for both approvers and does not provide a calculation for the penalty, only stating the percentage. Therefore, Answer A is more accurate and complete, while also being concise.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.4,
+        "B": 0.9
+      },
+      "scores_pass2": {
+        "A": 0.5,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Nhân viên Manager có thâm niên 12 năm: tổng phụ cấp hàng tháng và số ngày phép năm?",
+      "answer_a": "Phép: 19 ngày. Phụ cấp: 1.500.000 VNĐ/tháng.",
+      "answer_b": "Phụ cấp tháng: ăn trưa 1.000.000 + điện thoại Manager 500.000 = 1.500.000 VNĐ. Phép năm v2024: 15 ngày cơ bản + 4 ngày thâm niên (12÷3=4) = 19 ngày phép.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides a detailed breakdown of the monthly allowance, specifying the components of the allowance (lunch and phone) and correctly calculates the total number of leave days, including the seniority days. Answer A, while correct in the final numbers, lacks the detailed explanation and breakdown that Answer B offers, making it less informative.",
+      "reasoning_pass2": "Answer A provides a detailed breakdown of the monthly allowances and the calculation for the annual leave days, making it more complete and informative. Answer B, while correct, lacks the detailed explanation and context that Answer A offers, making it less comprehensive. Both answers are accurate, but A is more complete and concise in its presentation.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.5,
+        "B": 1.0
+      },
+      "scores_pass2": {
+        "A": 0.5,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+      "answer_a": "Nhân viên được nghỉ 12 ngày phép năm.",
+      "answer_b": "Theo chính sách v2024 HIỆN HÀNH: 15 ngày cơ bản (+1 ngày/3 năm thâm niên). Chính sách v2023 (đã bị thay thế) là 12 ngày. RAG có thể retrieve cả 2 tài liệu — câu trả lời đúng phải ưu tiên v2024.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides the most current information regarding the number of annual leave days for employees, including the updated policy for 2024 and the previous policy for 2023. It is more complete and accurate than Answer A, which only states the outdated figure of 12 days without context. Additionally, Answer B is concise while still delivering necessary details about the leave policy changes.",
+      "reasoning_pass2": "Answer A provides the most current information regarding the vacation policy for 2024, including details about the basic leave days and the additional days based on seniority. It also acknowledges the previous policy for context. Answer B, while partially correct, only mentions the outdated figure of 12 days without any context or mention of the updated policy, making it less accurate and complete.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.2,
+        "B": 0.9
+      },
+      "scores_pass2": {
+        "A": 0.3,
+        "B": 1.0
+      }
+    },
+    {
+      "question": "Nhân viên thử việc có được nghỉ phép năm không?",
+      "answer_a": "Nhân viên thử việc không được nghỉ phép năm và phải xin nghỉ không lương nếu cần.",
+      "answer_b": "KHÔNG. Nhân viên thử việc không được nghỉ phép năm. Nếu cần nghỉ phải xin nghỉ không lương và được trưởng phòng phê duyệt. Đây là negation trap — câu trả lời đúng là phủ định.",
+      "winner_pass1": "A",
+      "winner_pass2": "A",
+      "final_winner": "A",
+      "reasoning_pass1": "Answer A provides a clear and concise response to the question, stating that probationary employees do not receive annual leave and must request unpaid leave if needed. Answer B, while accurate, is less concise due to its use of capital letters and additional information about needing approval from the department head, which may not be necessary for the question asked. Therefore, Answer A is preferred for its clarity and conciseness.",
+      "reasoning_pass2": "Answer B provides a clear and concise response to the question, stating that probationary employees do not receive annual leave and must request unpaid leave if needed. Answer A, while also correct, includes unnecessary information about a 'negation trap' which does not add value to the answer and may confuse the reader. Therefore, Answer B is more complete and concise.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 1.0,
+        "B": 0.7
+      },
+      "scores_pass2": {
+        "A": 1.0,
+        "B": 0.5
+      }
+    },
+    {
+      "question": "Nhân viên Manager có thể dùng VPN cá nhân (NordVPN) khi WFH không?",
+      "answer_a": "Được, miễn là đảm bảo kết nối an toàn.",
+      "answer_b": "KHÔNG. Chính sách VPN v1.3 cấm sử dụng VPN cá nhân (NordVPN, ExpressVPN) trong mạng công ty. Bắt buộc dùng VPN WireGuard của công ty. Đây là policy contradiction trap — câu hỏi nghe hợp lý nhưng vi phạm chính sách.",
+      "winner_pass1": "B",
+      "winner_pass2": "B",
+      "final_winner": "B",
+      "reasoning_pass1": "Answer B provides a clear and complete explanation of the company's policy regarding the use of personal VPNs, specifically naming the prohibited services and the required company VPN. Answer A is too vague and lacks the necessary detail about the policy, making it less accurate and complete.",
+      "reasoning_pass2": "Answer A accurately reflects the company's policy against using personal VPNs, providing a clear and definitive response. It also explains the rationale behind the policy, which adds to its completeness. Answer B, on the other hand, contradicts the established policy by suggesting that using a personal VPN is acceptable, which is inaccurate. Therefore, Answer A is more accurate, complete, and concise.",
+      "position_consistent": true,
+      "scores_pass1": {
+        "A": 0.3,
+        "B": 0.9
+      },
+      "scores_pass2": {
+        "A": 0.0,
+        "B": 1.0
+      }
+    }
+  ],
+  "cohen_kappa": 0.4444444444444443,
+  "judge_labels": [
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+  ],
+  "human_labels": [
+    1,
+    0,
+    1,
+    1,
+    1,
+    0,
+    1,
+    0,
+    1,
+    0
+  ],
+  "bias": {
+    "total_judged": 10,
+    "position_bias_rate": 0.2,
+    "position_bias_count": 2,
+    "verbosity_bias": 0.875,
+    "verbosity_details": {
+      "a_wins_a_longer": 0,
+      "b_wins_b_longer": 7,
+      "total_decisive": 8
+    },
+    "interpretation": "Position bias is within the target range."
+  }
+}
